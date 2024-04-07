@@ -2,8 +2,8 @@ import 'package:api_papi/api/logic/api_service.dart';
 import 'package:api_papi/api/models/response_model.dart';
 import 'package:api_papi/ui/new_request.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class ResponseScreen extends StatefulWidget {
   ResponseScreen({super.key, this.login, this.password});
 
@@ -27,10 +27,10 @@ class _ResponseScreenState extends State<ResponseScreen> {
   }
 
   void apiAuth() async {
-    final ResponseModel response = await ApiService(RequestType.auth).post(
-      'https://auth.jobhub.ru/api/v1/login',
-      data: {'email': 'test@jobhub.ru', 'password': '123123'},
-    );
+    final ResponseModel response = await ApiService(RequestType.auth).post({
+      OptionType.path: 'https://auth.jobhub.ru/api/v1/login',
+      OptionType.data: {'email': 'test@jobhub.ru', 'password': '123123'},
+    });
 
     setState(() {
       responsesList.add(response);

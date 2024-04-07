@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class ApiException {
-  List<String> getExceptionMessage(DioException exception) {
+  static List<String> getExceptionMessage(DioException exception) {
     switch (exception.type) {
       case DioExceptionType.badCertificate:
         return [
